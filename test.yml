@@ -1,0 +1,29 @@
+    kalpa:
+      - varsfile:
+          - name: prop
+            ref: "entity.properties"
+            file: businessMaster.yml
+            directory: ./
+      - vars:
+          prop:
+            name: AdminID
+            size: 8
+            notnull: true
+          name: vinay1
+          properties:
+            name: ID
+            type: "hello" #hello
+            size: 8
+            unsigned: true
+            primary: true
+            minmum: 0
+            maximum: 99999999999999
+      - request:
+          - name: Business.get
+            body:
+              - name: AdminID
+                required: true
+                property: "{{ vars.prop|dump }}"
+              - name: "{{ vars.prop.name|dump }}"
+              - name: "{{ vars.name|dump }}"
+            properties: "{{ vars.properties|dump }}" 
